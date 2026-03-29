@@ -31,3 +31,22 @@
 .animate-wave-fast {
   animation: wave-move 5s linear infinite;
 }
+
+@keyframes sandFlow {
+  0% {
+    stroke-dashoffset: 40;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
+.sand-trail {
+  stroke-dasharray: 20 20;
+  animation: sandFlow 4s linear infinite;
+}
