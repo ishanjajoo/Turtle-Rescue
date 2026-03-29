@@ -1,0 +1,5 @@
+{
+  "name": "Turtle Rescue",
+  "description": "A strategic turn-based game where you guide baby turtles safely to the ocean while avoiding predators.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .bg-beach {
+    background-color: #f3e5ab;
+    background-image: 
+      radial-gradient(circle at 50% 50%, #f3e5ab 0%, #e6d5a7 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  
+  .wave-layer {
+    @apply absolute inset-0 w-[200%] h-full;
+    background: repeat-x url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-400-50s-244.5 50-400 50v31.8h800v-31.8z' fill='%23ffffff44'/%3E%3C/svg%3E");
+    background-size: 50% 100%;
+  }
+}
+
+@keyframes wave-move {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-wave-slow {
+  animation: wave-move 12s linear infinite;
+}
+
+.animate-wave-medium {
+  animation: wave-move 8s linear infinite;
+}
+
+.animate-wave-fast {
+  animation: wave-move 5s linear infinite;
+}
