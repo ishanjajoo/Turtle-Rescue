@@ -419,7 +419,7 @@ const VideoBackground = () => {
         muted
         loop
         playsInline
-        className="w-full h-full object-cover opacity-60"
+        className="absolute w-full h-full object-cover opacity-60"
       >
         <source src="/videos/background mute.mp4" type="video/mp4" />
       </video>
