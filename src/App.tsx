@@ -412,14 +412,27 @@ const PathOverlay = () => {
 };
 
 const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((e) => {
+        console.log("Autoplay blocked:", e);
+      });
+    }
+  }, []);
+
   return (
     <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden bg-black">
       <video
+        ref={videoRef}
+        id="bg-video"
         autoPlay
         muted
         loop
         playsInline
-        className="absolute w-full h-full object-cover opacity-60"
+        className="opacity-60"
       >
         <source src="/videos/background_webm.webm" type="video/webm" />
       </video>
