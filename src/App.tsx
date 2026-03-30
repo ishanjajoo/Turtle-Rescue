@@ -421,7 +421,7 @@ const VideoBackground = () => {
         playsInline
         className="absolute w-full h-full object-cover opacity-60"
       >
-        <source src="/videos/background mute.mp4" type="video/mp4" />
+        <source src="/videos/background_webm.webm" type="video/webm" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
     </div>
