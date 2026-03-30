@@ -411,6 +411,23 @@ const PathOverlay = () => {
   );
 };
 
+const VideoBackground = () => {
+  return (
+    <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden bg-black">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover opacity-60"
+      >
+        <source src="/background animation.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+    </div>
+  );
+};
+
 export default function App() {
   const [state, setState] = useState<GameState>(INITIAL_STATE);
   const [showTutorial, setShowTutorial] = useState(true);
@@ -596,16 +613,8 @@ export default function App() {
         ${activeTool === 'shell' ? 'cursor-help' : ''}
       `}
     >
-      {/* Background Video */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        className="absolute inset-0 w-full h-full object-cover -z-10"
-      >
-        <source src="/background.mp4" type="video/mp4" />
-      </video>
+      {/* Background Spritesheet */}
+      <VideoBackground />
       
       {/* Fallback/Overlay for readability */}
       <div className="absolute inset-0 bg-white/10 -z-10" />
@@ -675,10 +684,7 @@ export default function App() {
         <div className="flex flex-col gap-6 items-center">
           {/* Grid Area */}
           <div className="w-full max-w-2xl flex flex-col gap-4">
-            <div className={`
-              relative aspect-[5/6] bg-transparent overflow-hidden rounded-2xl border-4 transition-colors duration-300
-              ${activeTool === 'shell' ? 'border-[#8b4513]' : activeTool === 'leaf' ? 'border-[#2e8b57]' : 'border-white/20'}
-            `}>
+            <div className="relative aspect-[5/6] bg-transparent overflow-hidden rounded-2xl">
             {/* Goal Row (Transparent to show video background) */}
             <div className="absolute top-0 left-0 right-0 h-[16.66%] flex items-center justify-center overflow-hidden">
               {/* Optional: Add a subtle foam line if the video doesn't have one at the right spot */}
