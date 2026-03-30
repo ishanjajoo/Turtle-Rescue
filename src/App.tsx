@@ -411,14 +411,39 @@ const PathOverlay = () => {
   );
 };
 
-const Background = () => {
+const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.src = "/background.mp4";
+      video.muted = true;
+      
+      const handleInteraction = () => {
+        video.play().catch(e => console.log("Play failed:", e));
+      };
+
+      document.body.addEventListener("click", handleInteraction);
+      
+      // Also try to play immediately in case it's allowed
+      video.play().catch(e => console.log("Initial play blocked:", e));
+
+      return () => {
+        document.body.removeEventListener("click", handleInteraction);
+      };
+    }
+  }, []);
+
   return (
     <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden bg-black">
-      <img
-        src="/background.png"
-        alt="Background"
+      <video
+        ref={videoRef}
+        id="bg-video"
+        muted
+        loop
+        playsInline
         className="absolute w-full h-full object-cover opacity-60"
-        referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
     </div>
@@ -611,7 +636,7 @@ export default function App() {
       `}
     >
       {/* Background Spritesheet */}
-      <Background />
+      <VideoBackground />
       
       {/* Fallback/Overlay for readability */}
       <div className="absolute inset-0 bg-white/10 -z-10" />
