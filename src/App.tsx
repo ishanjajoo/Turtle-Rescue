@@ -416,12 +416,12 @@ const VideoBackground = () => {
     <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden bg-black">
       <video
         autoPlay
-        loop
         muted
+        loop
         playsInline
         className="w-full h-full object-cover opacity-60"
       >
-        <source src="/background mute.mp4" type="video/mp4" />
+        <source src="/videos/background mute.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
     </div>
